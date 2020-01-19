@@ -334,7 +334,6 @@ def quant2centers(paint, centers):
     x = x.view(paint.shape)
     return x
 
-    return paint
 
 
 def dilate_mask(mask,opt):
