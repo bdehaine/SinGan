@@ -2,6 +2,7 @@ from config import get_arguments
 import numpy as np
 import SinGAN.functions as functions
 import cv2
+import os
 
 
 if __name__ == '__main__':
@@ -23,21 +24,14 @@ if __name__ == '__main__':
         except OSError:
             pass
 
-            mask = cv2.imread('%s/%s' % (opt.ref_dir, opt.ref_name))
-            img = cv2.imread('%s/%s' % (opt.input_dir, opt.input_name), 0)
+        mask = cv2.imread('%s/%s' % (opt.ref_dir, opt.ref_name),0)
+        img = cv2.imread('%s/%s' % (opt.input_dir, opt.input_name))
+        telea_inpainted = cv2.inpaint(img, mask, 3, cv2.INPAINT_TELEA)
+        #res = cv2.bitwise_and(dst, dst, mask=mask)
 
-            telea_inpainted = cv2.inpaint(img, mask, 3, cv2.INPAINT_TELEA)
-
-            cv2.imshow('img', img)
-            cv2.imshow('mask', mask)
-
-            #res = cv2.bitwise_and(dst, dst, mask=mask)
-            cv2.imshow('d', res)
-
-            cv2.imwrite('%s/%s_telea.png' % (dir2save,opt.input_name),telea_inpainted)
-            cv2.waitKey(0)
-
-            cv2.destroyAllWindows()
+        cv2.imwrite('%s/%s_telea.png' % (dir2save,opt.input_name[:-4]),telea_inpainted)
+        
+        cv2.destroyAllWindows()
 
 
 

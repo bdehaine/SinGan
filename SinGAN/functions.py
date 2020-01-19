@@ -278,7 +278,7 @@ def generate_dir2save(opt):
         if opt.quantization_flag:
             dir2save = '%s_quantized' % dir2save
     elif opt.mode =='inpainting_telea':
-        dir2save = '%s/Inpainting_telea/%s/%s_out'  % (opt.out, opt.input_name[:-4],opt.ref_name[:-4])
+        dir2save = '%s/Inpainting_telea' % opt.out
     return dir2save
 
 def post_config(opt):
