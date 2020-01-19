@@ -29,8 +29,8 @@ if __name__ == '__main__':
         telea_inpainted = cv2.inpaint(img, mask, 3, cv2.INPAINT_TELEA)
         #res = cv2.bitwise_and(dst, dst, mask=mask)
 
-        cv2.imwrite('%s/%s_telea.png' % (dir2save,opt.input_name[:-4]),telea_inpainted)
-        
+        cv2.imwrite('%s/%s_telea%s' % (dir2save,opt.input_name[:-4],opt.input_name[-4:]),telea_inpainted)
+
         cv2.destroyAllWindows()
 
 
