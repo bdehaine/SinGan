@@ -30,6 +30,7 @@ if __name__ == '__main__':
 
         mode = opt.mode
         in_scale, iter_num = functions.calc_init_scale(opt)
+        print("number of iterations needed : ",iter_num)
         opt.scale_factor = 1 / in_scale
         opt.scale_factor_init = 1 / in_scale
         opt.mode = 'train'
